@@ -1,0 +1,137 @@
+body{
+  font-family: Arial, sans-serif;
+}
+
+#container{
+  width: 500px;
+  margin: 15px auto;
+}
+
+h1{
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+ul{
+  list-style: none;
+  padding:0;
+  margin: 0;
+}
+
+ul > li{
+  padding-bottom: 6px;
+}
+
+input {
+	margin-bottom: 10px
+}
+
+button#logout{
+  font-size:12px;
+  margin: 0px 0px 0px 390px;
+}
+
+#new_todo{
+  padding: 0.8em;
+  outline: none;
+  border: 1px solid #DDD;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 16px;
+  width: 490px;
+  box-shadow: 0 0 7px #3498db;
+  border: 1px solid #3498db;
+  overflow-wrap: anywhere
+  margin: 15px auto;
+}
+
+#new_comment{
+  padding: 0.8em;
+  outline: none;
+  border: 1px solid #DDD;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 16px;
+  width: 490px;
+  box-shadow: 0 0 7px #3498db;
+  border: 1px solid #3498db;
+  overflow-wrap: anywhere
+  margin: 15px auto;
+}
+
+#btn {
+	 border-radius: 0;
+    background: -moz-linear-gradient(top, #FFF 0%, #EEE);
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
+    border: 1px solid #DDD;
+    color: #111;
+    padding: 10px 30px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#btn:hover {
+    background: -moz-linear-gradient(top, #EFEFEF 0%, #EEE);
+    background: -webkit-gradient(linear, left top, left bottom, from(#EFEFEF), to(#EEE));
+    cursor: pointer;
+}
+
+
+textarea {
+     height: 260px;
+     font-family: Arial, sans-serif;
+}
+
+div > span {
+padding-left: 25px;
+}
+
+/*all_deleteボタン*/
+.margin {
+	margin-bottom: 20px;
+}
+
+#btn {
+	 border-radius: 0;
+    background: -moz-linear-gradient(top, #FFF 0%, #EEE);
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
+    border: 1px solid #DDD;
+    color: #111;
+    padding: 10px 30px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.delete_todo{
+  float: right;
+  display:inline-block;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.comment_todo{
+  float: right;
+  display:inline-block;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.all_delete {
+  float: right;
+  display:inline-block;
+  color: #ccc;
+  cursor: pointer;
+}
+
+
+.done{
+  text-decoration: line-through;
+}
+#todo_template{
+  display: none;
+}

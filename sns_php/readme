@@ -1,0 +1,4 @@
+MVC
+-Model:データ
+-View:画面
+-Controler:ModelとViewの橋渡し

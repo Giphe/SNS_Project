@@ -1,0 +1,259 @@
+
+body{
+  font-size:16px;
+  font-family: Verdana, sans-serif;
+  width:980px;
+  margin:0 auto;
+}
+
+#container{
+  width:280px;
+  margin:30px auto;
+}
+
+button:hover {
+	cursor:pointer;
+}
+
+div#header{
+	height:150px;
+	background-color:#ffffff;
+}
+
+title {
+	text-align:center;
+}
+
+select:hover {
+	cursor:pointer;
+}
+
+form{
+  text-align:center;
+}
+
+form#logout{
+  text-align:right;
+  font-size:12px;
+  margin-bottom: 15px;
+}
+
+button#logout{
+  font-size:12px;
+  margin: 0px 0px 0px 390px;
+}
+
+img#img {
+  margin-top:10px auto;
+}
+
+input[type=text],
+input[type=password],
+select {
+  padding:5px;
+  border-radius:4px;
+  font-size:14px;
+}
+
+
+input[type=radio]:hover {
+	cursor:pointer;
+}
+
+.btn{
+  width:100px;
+  padding:7px;
+  border-radius:5px;
+  color:#fff;
+  background:#00aaff;
+  box-shadow:0 3px 0 #0088cc;
+  cursor:pointer;
+  margin: 0 auto 15px;
+}
+
+
+/*
+*mtopics編集ページ
+*/
+/*
+#containerA{
+  padding: 0.8em;
+  outline: none;
+  border: 1px solid #DDD;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 16px;
+  width: 490px;
+  box-shadow: 0 0 7px #3498db;
+  border: 1px solid #3498db;
+  overflow-wrap: anywhere
+  margin: 15px auto;
+
+}
+*/
+
+
+#btn {
+   border-radius: 0;
+    background: -moz-linear-gradient(top, #FFF 0%, #EEE);
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
+    border: 1px solid #DDD;
+    color: #111;
+    padding: 10px 30px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#btn:hover {
+    background: -moz-linear-gradient(top, #EFEFEF 0%, #EEE);
+    background: -webkit-gradient(linear, left top, left bottom, from(#EFEFEF), to(#EEE));
+    cursor: pointer;
+}
+
+/*
+*別ページ
+*/
+
+.btn:hover{
+  opacity:0.8;
+}
+
+.fs12{
+  font-size:12px;
+  font-weight: normal;
+}
+
+.calendar {
+	text-align:right;
+  font-size:12px;
+  font-weight: normal;
+}
+
+.err{
+  color: #ff3d00;
+  font-weight:bold;
+  font-size: 13px;
+}
+table{
+  margin: 15px auto;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+th{
+  background: #eee;
+}
+th, td{
+  padding:7px;
+  text-align:center;
+}
+
+.youbi_0{
+  color: red;
+}
+.youbi_6{
+  color:blue;
+}
+.today{
+  font-weight : bold;
+}
+.gray{
+  color: #dedede;
+}
+
+/* topics.php
+*　sidebar, header, footer
+*
+*/
+
+#sidebar{
+	width:250px;
+	min-height:500px;
+	height:auto;
+	background-color:#f3e694;
+	float:left;
+	margin-top:10px;
+}
+
+#containerA {
+  margin-left:260px;
+  width:720px;
+  height:auto;
+  background-color:#f3e694;
+  margin-top:10px;
+  padding: 10px 30px;
+  position:relative;
+
+}
+
+div > li {
+	margin:10px;
+}
+
+.ui-datepicker-trigger {
+  width:30px;
+  height:30px;
+  padding-top:10px;
+}
+
+.ui-datepicker-trigger:hover {
+	cursor: pointer;
+	opacity:0.8;
+}
+
+.containerA {
+	padding-top:20px;
+	text-align:left;
+	padding-right: 10px;
+	display: flex;
+	position:relative;
+}
+
+.containerU {
+  padding-top:20px;
+  text-align:left;
+  padding-right: 10px;
+  display: flex;
+  position:relative;
+  padding: 15px;
+}
+
+
+#title {
+
+}
+
+#body, #title {
+	padding: 0.8em;
+  outline: none;
+  border: 1px solid #DDD;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 16px;
+  width: 490px;
+  box-shadow: 0 0 7px #3498db;
+  border: 1px solid #3498db;
+  overflow-wrap: anywhere
+  margin: 15px auto;
+  display:relative;
+  display: flex;
+}
+
+textarea {
+      height: 260px;
+      font-family: Arial, sans-serif;
+      position: relative;
+}
+
+div.containerA>span {
+	width:85px;
+	height:auto;
+}
+
+div.containerU>span {
+	 width:150px;
+  height:auto;
+
+}
