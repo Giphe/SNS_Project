@@ -1,0 +1,23 @@
+2109/11/09 SNS_Project
+
+
+・docファイルの作成
+・新規登録フォーム作成
+email、user_name、passwordの登録
+・eclipseから編集できないこと
+・コメント機能の実装
+「返信」ボタンを作成返信フォームへ遷移、todo_idに紐づいたコメントレコードを表示
+todo：コメントは１対多where todo_idでcomment_idを取得→コメントレコードを取得表示する
+表示に関してはtodoを参考にする
+
+・編集フォーム作成
+返信の隣に編集ボタンを作成→独自のedit.phpを作る。
+フォーマットはtodo.phpと変わらず、requestのtodo_idに対してselectでレコード抽出
+フォームには書き込んだ内容を出力する
+(user_name)、title, body
+
+・問題点
+コメントの時と同様、_ajaxをかませるかどうか。
+1.かませるとmodeをポスト可能（ただしphp, jqueryの二重postになってしまう可能性あり）
+2.単純でシンプル、commentと同じように作ればcommentよりも短時間で製造可能。Todo.phpを使うことができそう。
+

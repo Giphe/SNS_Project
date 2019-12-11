@@ -49,16 +49,29 @@ $app = new MyApp\Controller\Muser();
 
  	<div id="containerA">
  		<form action="" id="ceate_user" enctype="multipart/form-data" method="post" >
- 			<div class="containerU"><span>ユーザ名</span><input type="text" id="user_id" name="user_name" value="<?php if(isset($_SESSION['me']->user_name)) { echo $_SESSION['me']->user_name;} else {echo '';} ?>" ></div>
- 			<div class="containerU"><span>メールアドレス</span><input type="text" id="datepicker1" name="start_date" value="<?php if(isset($_SESSION['me']->email)) { echo $_SESSION['me']->email;} else {echo '';} ?>" ></div>
- 			<div class="containerU"><span>パスワード</span><input type="text" id="datepicker3" name="koukai_date" ></div>
- 			<div class="containerU"><span>ウェブ利用</span>利用しない<input type="radio" id="web_flg" name="web_flg" value="0" selected>利用する<input type="radio" id="web_flg" name="web_flg" value="1"></div>
-            <div class="containerU"><span>有料会員登録</span>登録しない<input type="radio" id="premium_flg" name="premium_flg" value="0" selected>登録する<input type="radio" id="premium_flg" name="premium_flg" value="1"></div>
-            <div class="containerU"><span>アイコン</span><input type="file" id="icon" name="icon" placeholder="edit"></div>
-            <input type="submit" id="btn" value="Submit!">
+ 			<div class="containerU"><span>ユーザ名</span><input type="text"name="user_name" value="<?php if(isset($_SESSION['me']->user_name)) { echo $_SESSION['me']->user_name;} else {echo '';} ?>" ></div>
+ 			<div class="containerU"><span>メールアドレス</span><input type="email" name="email" value="<?php if(isset($_SESSION['me']->email)) { echo $_SESSION['me']->email;} else {echo '';} ?>"></div>
+ 			<div class="containerU"><span>住　所</span><input type="text" name="address" placeholder="東京都足立区梅田"  value="<?php if(isset($_SESSION['me']->address)) { echo $_SESSION['me']->address;} else {echo '';} ?>" ></div>
+ 			<div class="containerU"><span>電話番号</span><input type="tel" inputmode="tel" placeholder="080-1234-5678" name="tel" value="<?php if(isset($_SESSION['me']->tel)) { echo $_SESSION['me']->tel;} else {echo '';} ?>" ></div>
+ 			<div class="containerU"><span>ウェブ利用</span>利用しない<input type="radio" id="web_flg" name="web_flg" value="0" <?php if (h($_SESSION['me']->web_flg) == 0) {echo 'checked';} ?>>
+ 			利用する<input type="radio" id="web_flg" name="web_flg" value="1" <?php if (h($_SESSION['me']->web_flg) == 1) {echo 'checked';} ?>></div>
+            <div class="containerU"><span>プレミアム画質</span>登録しない<input type="radio" id="premium_flg" name="premium_flg" value="0" <?php if (h($_SESSION['me']->premium_flg) == 0) {echo 'checked';} ?>>
+            登録する<input type="radio" id="premium_flg" name="premium_flg" value="1"<?php if (h($_SESSION['me']->premium_flg) == 1) {echo 'checked';} ?>></div>
+            <?php if(isset($_SESSION['me']->icon)) { ?>
+	            <div class="containerU"><span>アイコン</span><input type="file" id="icon" name="icon" ></div>
+            <?php } else { ?>
+	            <div class="containerU"><span>アイコン</span>変更する<input type="radio" id="henkou_flg" name="henkou_flg" value="1" checked><input type="file" id="icon" name="icon" >削除する<input type="radio" id="henkou_flg" name="henkou_flg" value="1" checked></div>
+            <?php } ?>
+            <div class="containerU"><span>自己紹介文</span><textarea id="shokai" name="shokai" value="<?php if(isset($_SESSION['me']->shokai)) { echo $_SESSION['me']->shokai;} else {echo '';} ?>" ></textarea></div>
+			<input type="submit" id="btn" value="Submit!">
             <input type="hidden" name="token" value="<?=h($_SESSION['token']);?>">
       	</form>
   </div>
+  <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+  <script>
+	CKEDITOR.replace('shokai');
+
+  </script>
   </body>
 
 </html>

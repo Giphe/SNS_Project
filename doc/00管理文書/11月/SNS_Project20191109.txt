@@ -1,0 +1,18 @@
+2109/11/09 SNS_Project
+
+
+・docファイルの作成
+・新規登録フォーム作成
+email、user_name、passwordの登録
+・eclipseから編集できないこと
+・コメント機能の実装
+「返信」ボタンを作成返信フォームへ遷移、todo_idに紐づいたコメントレコードを表示
+todo：コメントは１対多where todo_idでcomment_idを取得→コメントレコードを取得表示する
+表示に関してはtodoを参考にする
+
+返信フォームの作成
+フォームの入力内容は「名前」
+テキストボックスにセッション変数(user_name)をデフォルト表示
+$return_nameにpostの値を格納、投稿者名を変更可能にする
+comment.phpで「返信する」を押下後todo.phpにリダイレクトをかける
+_ajaxはTodo.phpにポストが渡されるので使うことはできない。

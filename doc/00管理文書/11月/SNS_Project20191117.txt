@@ -1,0 +1,17 @@
+2109/11/09 SNS_Project
+
+
+ajaxが完全に動かなくなった
+
+原因
+responseTextに不正な値が入ってきていること
+・json形式でないこと
+
+試したこと
+・.ajaxに変えてみた（略式はgetJson())→全選択は動いたがpostがされない。
+・success(function(data){console.log(data)}),→オブジェクトが入ってくる。
+
+今後と現状
+・何日もajaxにはまっている状況である。
+・調べても有効な手段がない。
+・今後もかかることを考えてLaravelに移行しようと思う。

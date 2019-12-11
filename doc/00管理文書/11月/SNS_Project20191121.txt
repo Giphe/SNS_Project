@@ -1,0 +1,25 @@
+2109/11/20 SNS_Project
+
+
+・topics実装
+・アイコン画像、トリミング機能実装
+・topicsの投稿機能、CKエディタの実装
+・更新機能、更新者は「管理者」と「事務員」のみ
+・t_topicsgroupで参照できるtopicsを絞る。FWはLaravel
+・オートローダー機能の実装がまだなので../などが残っている。
+・scriptPath, bathPathの定義
+・indexActionなどのAction名を呼ぶ仕組み「Dispacher」の実装
+
+2019/11/21
+
+・DB複数項目実装
+・Todoあらかた完了
+
+・Topicsの製造
+モデルyahooニュース
+・Topicsがリスト上に一列にならぶ、表示は画像とタイトル、内容が一部表示される。
+
+課題
+・CSSが未実装であること（リスト型はtodoを参考にするしかない。）
+・Topicsのフォーマットが未実装であること。こちらもほぼ1から作成
+

@@ -3,10 +3,11 @@
 namespace MyApp\Model;
 
 class User extends \MyApp\Model {
+    protected $user = '';
 
   public function create($values){
     $stmt = $this->db->prepare("insert into t_users (email, password, created,
-    modified, user_name) values (:email, :password,now(), now(), :user_name)");
+    modified, user_name) values (:email, :password, now(), now(), :user_name)");
     $res = $stmt->execute([
       ':email' => $values['email'],
       ':user_name' => $values['user_name'],
@@ -17,21 +18,20 @@ class User extends \MyApp\Model {
     }
   }
 
-  public function getUser($values){
-      $stmt = $this->db->prepare("select id, email, password, created,
-        modified, user_name from t_users");
-      $res = $stmt->execute([
-          'email' => $values['email'],
-          'password' => password_hash($values['password'], PASSWORD_DEFAULT),
-          'id' => $values['id'],
-          'created' => $values['created'],
-          'modified' => $values['modified'],
-          'user_name' => $values['user_name']
-      ]);
-      if($res === false ){
-          throw new \MyApp\Exception\FailedLoad();
-      }
-  }
+//   public function getUser($email){
+//       $stmt = $this->db->prepare(sprintf("select * from t_users where email = %d", $email));
+//       $res = $stmt->execute([
+//           'email' => $this->user['email'],
+//           'password' => password_hash($values['password'], PASSWORD_DEFAULT),
+//           'id' => $values['id'],
+//           'created' => $values['created'],
+//           'modified' => $values['modified'],
+//           'user_name' => $values['user_name']
+//       ]);
+//       if($res === false ){
+//           throw new \MyApp\Exception\FailedLoad();
+//       }
+//   }
 
   public function login($values){
     $stmt = $this->db->prepare("select * from t_users where email = :email");
@@ -68,6 +68,6 @@ class User extends \MyApp\Model {
    *
    */
   public function select_Su($loginId) {
-      $where = \MyApp\Fw\Sql\Where()->equalTo($loginId);
+      $this->where = \MyApp\Fw\Sql\Where()->equalTo($loginId);
   }
 }

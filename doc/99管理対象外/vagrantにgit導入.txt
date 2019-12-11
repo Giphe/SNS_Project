@@ -1,0 +1,23 @@
+git最新取得
+
+Gitの導入に必要なツールを先にインストールする。
+$ sudo yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
+
+Gitを導入していきます。まずはソースコードを取得し、解凍する。
+$ cd /usr/local/src/
+$ sudo wget https://www.kernel.org/pub/software/scm/git/git-2.13.3.tar.gz
+$ sudo tar xzvf git-2.13.3.tar.gz
+
+makeコマンドでインストールする。
+$ cd git-2.13.3
+$ sudo make prefix=/usr/local all
+$ sudo make prefix=/usr/local install
+$ source /etc/profile
+
+確認する。
+$ git --version
+git version 2.13.3
+
+
+気になる場合はtar.gzファイルは削除してしまう。
+$ rm -rf git-2.13.3.tar.gz

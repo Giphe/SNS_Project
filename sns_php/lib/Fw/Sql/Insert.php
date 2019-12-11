@@ -1,7 +1,7 @@
 <?php
 namespace MyApp\Fw\Sql;
 
-class Where {
+class Insert {
 
     public function equalTo($column, $param) {
         if($param == '' || $param == null) {

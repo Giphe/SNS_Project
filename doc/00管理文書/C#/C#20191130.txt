@@ -1,0 +1,25 @@
+C#Practice
+
+■インターフェイスの実装
+・インターフェースを継承したクラスは全てインターフェース内のメソッドを持たなければならない。
+・インターフェースが各自の項目を拾ってくれる
+
+■継承といえばabstruct
+・class Human : Japanese {}のように"属する"という意味合いを与える。
+
+■大文字小文字判定はシビア、クラス名、Console.Writeしかり
+
+■ジェネリック関数
+・MyData<string> s = new MyData<string>();
+        s.GetThree("hello");
+・public void GetThree(T x)
+
+■voidは戻り値を返さない
+
+■void以外public int ,public string
+→phpと比べてめんどくさいpublic function getNameみたいなことができないいから。
+
+■名前空間
+→usingを使って名前空間をロード
+→クラスが増えてくると名前の衝突を避けたり、わかりやすく機能ごとに分類したくなるから
+→

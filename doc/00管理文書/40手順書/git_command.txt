@@ -1,0 +1,28 @@
+git_command
+
+git config --global user.name "Giphe"
+git config --global user.email "yama8ky7@gmail.com"
+git init
+git push origin :SNS_Project
+git push origin SNS_Project
+
+git clone?git pushまで
+PS C:\Users\User\app> ホームディレクトリ
+
+git clone https://github.com/Giphe/SNS_Project.git
+(git branch SNS_Project)
+(git checkout SNS_Project)
+git init
+
+
+リポジトリを更新
+※リポジトリは現在仮想マシン内のため、ローカルであるC:\Program Files\pleiades\xampp\htdocs\SNS_Project
+にはアクセスできないことに注意。
+
+更新後↓
+リポジトリ内のすべてをコミット対象とする
+commit後ブランチを選択してpush
+
+git add .
+git commit
+git push origin SNS_Project

@@ -69,11 +69,11 @@ $app = new MyApp\Controller\Mtopics();
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
   <script src="/js/topics.js"></script>
-	<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
-	<script>
-		CKEDITOR.replace('body');
+  <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+  <script>
+	CKEDITOR.replace('body');
 
-</script>
+  </script>
   </body>
 
 </html>

@@ -1,0 +1,44 @@
+2109/12/03 SNS_Project
+
+
+■課題
+・UserPage.紹介文、count(follower_id)、count(user_id)、リスト状
+・イラレ
+
+■不具合
+・連続投稿が可能
+→ajaxを使ってボタンをグレーアウトする。
+
+■TODO:ユーザ管理画面の作成（管理者は一人くらい）
+・ログイン情報の補強
+・右上のアイコン画像をクリックでユーザ編集画面に移動
+・csrf対策
+・アイコン画像label追加
+
+■muser
+・ログイン情報入力フォーム
+・画像or報告書ダウンロード
+
+■menu
+・su_flgによる認証myfunc(2)（それ以外はmyfunc(1))
+・認証はログイン機能を流用→認証テーブル追加、クッキーの保持(2日間有効)
+
+■備忘録C#
+・ラムダ式→メソッドを変数として扱う。
+・EventHandlerで有効活用可能
+・HashSetはSqlのDistinctほぼ同義。HashSet<int answers = new HashSet<int() {3,5,8,5};など。
+・using System.Linqを読み込むことで、var results = from price in prices
+                      where price * 1.08 > 50.0
+                      select price * 1.08;
+                      のようにSQL文を記述可能
+
+
+■ダッシュボードの機能参考
+・サイドバーをタブ化する。ダッシュボードはヘッダーに追加
+
+■画像のサイズ上限
+・3MB以上のファイルはアップ不可あるいはサイズを縮小して表示
+
+■Sqlクラスの作成
+・WhereはequalToでqueryに付け足す文字列を取得。
+・同様に(Order, Like, Distinct, Group, Insert, Update, Delete, Select)

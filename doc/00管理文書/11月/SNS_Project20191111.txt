@@ -1,0 +1,56 @@
+2109/11/09 SNS_Project
+
+
+・docファイルの作成
+・新規登録フォーム作成
+email、user_name、passwordの登録
+・eclipseから編集できないこと
+・コメント機能の実装
+「返信」ボタンを作成返信フォームへ遷移、todo_idに紐づいたコメントレコードを表示
+todo：コメントは１対多where todo_idでcomment_idを取得→コメントレコードを取得表示する
+表示に関してはtodoを参考にする
+
+返信フォームの作成→実装済み
+・icon_img
+・css
+・セッションID配布
+・トップページ
+１、画像切り替え
+２、カレンダーイベント（文書管理）
+３、リンク集
+４、ヘッダ
+５、バナー
+６、ワード検索機能
+７、掲示板作成機能
+８、画像投稿
+９、インスタ風
+１０、フォロー、フォロワー
+１１、Facebook、Twitte、Instagram
+１２、slack、redmineの利用
+１３、フォロー機能
+１４、オートローダー
+１５、自己紹介ページ
+１６、ユーザ登録フォーム
+１７、テンプレートページ作成twitter
+・head（自己紹介）
+・body（ユーザ名、フォロワー数フォロー数）
+・tbody
+・ttable
+・listで作成
+自分のサイトへtoken, user_id, login_date,
+
+フォローした人のツイートが見られるようにする→user_idに紐づいたものを取得
+
+autoload機能
+Fw
+┗Sql
+	┗クラス名SELECT, DISTINCT, INSERT, UPDATE, TRUNCATE, WHERE, GROUP, ORDER, DELETE, COUNT, LIKE, →共通関数で使う
+		・SELECT *1 FROM *2名 WHERE *3 = *4;
+		・DISTINCT *1 = *2; //todo
+		・INSERT INTO *1 (x1, [x2,]) VALUES (:x1, [:x2,]);
+		・UPDATE 
+		
+
+Config
+┗共通関数
+
