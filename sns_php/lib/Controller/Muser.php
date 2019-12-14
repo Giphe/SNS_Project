@@ -65,6 +65,13 @@ class Muser extends \MyApp\Controller{
 
             //$_POST['icon']の有無を確認
             if (isset($_FILES['icon'])) {
+//                 $image  = $_FILES["icon"];
+//                 list($width, $hight) = getimagesize($image); // 元の画像名を指定してサイズを取得
+//                 $baseImage = imagecreatefromjpeg($image); // 元の画像から新しい画像を作る準備
+//                 $image_resize = imagecreatetruecolor(100, 100); // サイズを指定して新しい画像のキャンバスを作成
+
+//                 imagecopyresampled($image_resize, $baseImage, 0, 0, 0, 0, 100, 100, $width, $hight);
+//                 $image = imagejpeg($image_resize , 'new.jpg');
 
                 if (is_uploaded_file($_FILES["icon"]["tmp_name"])) {
                     if (move_uploaded_file($_FILES["icon"]["tmp_name"], __DIR__ . $this->filedir.$_FILES["icon"]["name"])) {
@@ -91,6 +98,8 @@ class Muser extends \MyApp\Controller{
                 exit;
             } else {
                 $this->update_user($this->user);
+                header('Location:' . SITE_URL . '/login.php');
+                exit;
             }
 
 

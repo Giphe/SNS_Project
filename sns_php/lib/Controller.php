@@ -49,4 +49,6 @@ class Controller {
   public function me(){
     return $this->isLoggedIn() ? $_SESSION['me'] : null;
   }
+
+
 }

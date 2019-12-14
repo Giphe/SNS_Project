@@ -10,7 +10,7 @@ $app = new MyApp\Controller\Index();
 $app->run();
 
 //$app->me()
-//$app->getValues()->users
+//$app->getValues()->user
 
 ?>
 <!DOCTYPE html>
@@ -21,32 +21,50 @@ $app->run();
     <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
-    <div id="container">
+    <div id="header">
       <form action="/master/logout.php" method="post" id="logout">
         <a href="/master_admin/menu.php"><?=h($app->me()->user_name); ?></a> <input type="submit" name="" value="Log Out">
 
         <input type="hidden" name="token" value="<?=h($_SESSION['token']);?>">
       </form>
 
-      <p class="fs12"><a href="/master/calendar.php">Calendar</a></p>
-      <p class="fs12"><a href="/master/topics.php">Topics</a></p>
-      <p class="fs12"><a href="/master/wisp.php">Wisp</a></p>
-      <p class="fs12"><a href="/master/todo.php">Todos</a></p>
-      <p class="fs12"><a href="/master/generate_word.php">Words</a></p>
-
-
-      <h1>Users <span class="fs12">(<?=count($app->getValues()->users) ?>)</span> </h1>
+      <h1>Users <span class="fs12">(<?=count($app->getValues()->user) ?>)</span> </h1>
       <ul>
-        <?php foreach($app->getValues()->users as $user): ?>
+        <?php foreach($app->getValues()->user as $user): ?>
           <li><?=h($user->email); ?>
           	<ul>
-          		<li><?=h($user->user_name); ?></li>
-	            <li><?=h($user->modified); ?></li>
+          		<li><?=h($app->me()->user_name); ?></li>
+	            <li><?=h($app->me()->modified); ?></li>
           	</ul>
           </li>
 
         <?php endforeach; ?>
       </ul>
     </div>
+    <div id="sidebar">
+    	<ul>
+            <li id="calendar"><a href="/master/calendar.php">Calendar</a></li>
+            <li id="topics"><a href="/master/topics.php">Topics</a></li>
+            <li id="wisps"><a href="/master/wisp.php">Wisp</a></li>
+            <li id="todos"><a href="/master/todo.php">Todos</a></li>
+            <li id="words"><a href="/master/generate_word.php">Words</a></li>
+      	</ul>
+    </div>
+    <div id="containerA">
+    	<ul>
+    		<div class="containerU">こんにちは！<?php if(isset($_SESSION['me']->user_name)) { echo $_SESSION['me']->user_name;} else {echo '';} ?>さん</div>
+ 			<?php if(isset($_SESSION['me']->icon)) { ?>
+ 				<div class="containerU"><img src="/../img/icon/<?= h($_SESSION['me']->icon); ?>" name="icon" width="80px" height="80px"></div>
+ 			<?php } ?>
+ 			<div class="containerU"><span>フォロー</span><?= h($app->me()->follow)?></div>
+ 			<div class="containerU"><span>フォロワー</span><?= h($app->me()->follower)?></div>
+ 			<div class="containerU"><span>電話番号</span><input type="tel" inputmode="tel" placeholder="080-1234-5678" name="tel" value="<?php if(isset($_SESSION['me']->tel)) { echo $_SESSION['me']->tel;} else {echo '';} ?>" ></div>
+ 			<div class="containerU"><span>ウェブ利用</span>利用しない<input type="radio" id="web_flg" name="web_flg" value="0" <?php if (h($_SESSION['me']->web_flg) == 0) {echo 'checked';} ?>>
+
+    	</ul>
+    </div>
+    <div id="footer">
+    </div>
+
   </body>
 </html>

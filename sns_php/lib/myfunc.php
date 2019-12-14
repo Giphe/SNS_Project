@@ -15,9 +15,19 @@ class myfunc {
     }
 
     //認証1:一般利用者、認証2：管理者
-    public function myfunc($n_user) {
-        $res = '';
+    public function checkUser($n_user) {
 
+        //CSRF対策
+        $this->_createToken();
+        try{
+            $this->_db = new \PDO(DSN, DB_USERNAME, DB_PASSWORD);
+            $this->_db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        }catch(\PDOException $e){
+            echo $e->getMessage();
+            exit;
+        }
+
+        $this->_validateToken();
         //セッションの値を格納
         $this->login_id = $_SESSION['me']->login_id;
         $this->password = $_SESSION['me']->password;
@@ -56,5 +66,27 @@ class myfunc {
     //事務フラグ取得
     private function getJimFlg (){
 
+    }
+
+    /* _validateToken
+     * @param
+     */
+    private function _validateToken() {
+        if(!isset($_SESSION['token']) || !isset($_POST['token']) || $_SESSION['token'] !== $_POST['token']){
+            throw new \Exception('invalid token!');
+        }
+        if(!isset($_SESSION['me']) && !isset($_POST['me'])){
+            throw new \Exception('invalid me!');
+        }
+    }
+
+    /* _createToken
+     * @param
+     * tokenを生成
+     */
+    private function _createToken(){
+        if(!isset($_SESSION['token'])){
+            $_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(16));
+        }
     }
 }

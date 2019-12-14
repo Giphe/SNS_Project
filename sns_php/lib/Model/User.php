@@ -18,21 +18,6 @@ class User extends \MyApp\Model {
     }
   }
 
-//   public function getUser($email){
-//       $stmt = $this->db->prepare(sprintf("select * from t_users where email = %d", $email));
-//       $res = $stmt->execute([
-//           'email' => $this->user['email'],
-//           'password' => password_hash($values['password'], PASSWORD_DEFAULT),
-//           'id' => $values['id'],
-//           'created' => $values['created'],
-//           'modified' => $values['modified'],
-//           'user_name' => $values['user_name']
-//       ]);
-//       if($res === false ){
-//           throw new \MyApp\Exception\FailedLoad();
-//       }
-//   }
-
   public function login($values){
     $stmt = $this->db->prepare("select * from t_users where email = :email");
     $stmt->execute([
@@ -51,12 +36,12 @@ class User extends \MyApp\Model {
   }
 
   /*全パラメータ取得
-   * findAll
+   * selectUser
    * @param
    *
    */
-  public function findAll(){
-    $stmt = $this->db->query("select * from t_users order by id");
+  public function selectUser(){
+    $stmt = $this->db->query(sprintf("select * from t_users where id = %d", $_SESSION['me']->id));
     $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
     return $stmt->fetchAll();
 

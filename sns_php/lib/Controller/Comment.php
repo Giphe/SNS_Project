@@ -24,18 +24,14 @@ class Comment extends \MyApp\Controller {
     //:TODOtokenはすでに作成済みいらなくなったら消す
     public function __construct(){
 
+        //認証チェック
+        $myfunc = new \MyApp\myfunc();
+        $myfunc->checkUser(1);
+
         //セッションの値を格納
         $this->user_name = $_SESSION['me']->user_name;
 
-        //CSRF対策
-        $this->_createToken();
-        try{
-            $this->_db = new \PDO(DSN, DB_USERNAME, DB_PASSWORD);
-            $this->_db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        }catch(\PDOException $e){
-            echo $e->getMessage();
-            exit;
-        }
+
         if($_SERVER["REQUEST_METHOD"] != "POST"){
             // ブラウザからHTMLページを要求された場合
             if ($this->user_name != '') {
@@ -44,8 +40,6 @@ class Comment extends \MyApp\Controller {
             //セッション変数のuser_nameの値をそのまま渡す
 
         }else{
-            // フォームからPOSTによって要求された場合
-            $this->_validateToken();
 
             //ポストされた値を格納
             $this->todo_id = $_REQUEST['todo_id'];
@@ -72,21 +66,13 @@ class Comment extends \MyApp\Controller {
         return;
     }
 
-    /*
-     * _createToken
-     * @param
-     * tokenを生成
-     */
-    private function _createToken(){
-        if(!isset($_SESSION['token'])){
-            $_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(16));
-        }
-    }
+
 
     /*
      * _validateToken
      * @param
      */
+     /*
     private function _validateToken(){
         if(!isset($_SESSION['token']) || !isset($_POST['token']) || $_SESSION['token'] !== $_POST['token']){
             throw new \Exception('invalid token!');
@@ -95,6 +81,7 @@ class Comment extends \MyApp\Controller {
             throw new \Exception('invalid me!');
         }
     }
+    */
 
     /*user_nameを表示
      * setUsernm

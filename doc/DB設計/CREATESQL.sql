@@ -1,4 +1,5 @@
 ﻿
+
 drop table SNS_Project.m_group;
 create table SNS_Project.m_group(
 	group_id int(8),
@@ -121,5 +122,13 @@ create table SNS_Project.t_comments(
 	user_id int,
 	user_name varchar(255),
 	created datetime
+);
+
+drop table SNS_Project.t_auth;
+create table SNS_Project.t_auth(
+	id int not null auto_increment primary key,
+	email varchar(255) unique,
+	token varchar(255),
+	modified datetime
 );
 

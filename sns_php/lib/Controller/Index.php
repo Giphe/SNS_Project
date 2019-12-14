@@ -2,9 +2,9 @@
 
 namespace MyApp\Controller;
 
-class Index extends \MyApp\Controller{
+class Index extends \MyApp\Controller {
 
-  public function run(){
+  public function run() {
     if(!$this->isLoggedIn()){
     //login
     header('Location: '. SITE_URL . '/master/login.php');
@@ -12,6 +12,6 @@ class Index extends \MyApp\Controller{
     }
     //get users info
     $userModel = new \MyApp\Model\User();
-    $this->setValues('users', $userModel->findAll());
+    $this->setValues('user', $userModel->selectUser());
   }
 }

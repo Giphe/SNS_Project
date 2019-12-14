@@ -16,12 +16,8 @@
 ・アイコン画像label追加
 
 ■muser
-・ログイン情報入力フォーム
-・画像or報告書ダウンロード
-
-■menu
-・su_flgによる認証myfunc(2)（それ以外はmyfunc(1))
-・認証はログイン機能を流用→認証テーブル追加、クッキーの保持(2日間有効)
+・更新時にDB更新と画像の物理削除
+・セッションの書き換え
 
 ■備忘録C#
 ・ラムダ式→メソッドを変数として扱う。
@@ -39,16 +35,19 @@
 ■画像のサイズ上限
 ・3MB以上のファイルはアップ不可あるいはサイズを縮小して表示
 
-■Sqlクラスの作成
-・WhereはequalToでqueryに付け足す文字列を取得。
-・同様に(Order, Like, Distinct, Group, Insert, Update, Delete, Select)
+■Sqlクラスの作成→保留
 
-■checkout先をbranch_srcに変更
-・今後文書系はhtdoc内のdocから更新する。
-・毎日のコマンド↓
+■myfunc
+・$myfunc = new \MyApp\myfunc();で_createToken(), _validateToken()を実装
+・認証はログイン機能を流用→認証テーブル追加、クッキーの保持(2日間有効)
+・su_flgによる認証myfunc(2)（それ以外はmyfunc(1))
+・セッションの書き換え毎度myfunc処理を走らせる→セッションの値の書き換え
 
-git config --global user.name "Giphe"
-git config --global user.email "yama8ky7@gmail.com"
-git add .
-git commit
-git push origin branch_src
+実装
+→t_authテーブル追加（削除は以下の場合）
+・ログアウト時
+・invalidTokenが投げられた時
+
+■Exceptionが投げられたら
+・t_authからログイン中のuserをdelete
+・セッションをdestroyさせる

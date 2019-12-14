@@ -1,0 +1,9 @@
+git コミットコマンド↓
+
+
+cd C:\Program Files\pleiades\xampp\htdocs\SNS_Project
+git config --global user.name "Giphe"
+git config --global user.email "yama8ky7@gmail.com"
+git add .
+git commit
+git push origin branch_src
