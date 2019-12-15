@@ -34,6 +34,7 @@ class Comment extends \MyApp\Controller {
 
         if($_SERVER["REQUEST_METHOD"] != "POST"){
             // ブラウザからHTMLページを要求された場合
+            $myfunc->_validatetoken();
             if ($this->user_name != '') {
                 $this->user_name = $_SESSION['me']->user_name;
             }

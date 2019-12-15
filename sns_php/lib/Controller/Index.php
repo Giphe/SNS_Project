@@ -13,5 +13,14 @@ class Index extends \MyApp\Controller {
     //get users info
     $userModel = new \MyApp\Model\User();
     $this->setValues('user', $userModel->selectUser());
+
+    $follow_info = new \MyApp\Model\Follow();
+    $this->setValues('follow', $follow_info->get_follow());
+    $this->setValues('follower', $follow_info->get_follower());
+  }
+
+  public function __construct() {
+      //パラメータの取得
+      //post処理
   }
 }

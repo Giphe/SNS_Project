@@ -51,3 +51,9 @@
 ■Exceptionが投げられたら
 ・t_authからログイン中のuserをdelete
 ・セッションをdestroyさせる
+
+■follow機能の実装
+・フォローボタン押下後t_followにフォロー者user_id, フォロワーfollower_id、フォロー日時が追加される
+・ajaxでstatus管理
+
+

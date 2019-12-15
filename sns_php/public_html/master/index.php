@@ -59,7 +59,7 @@ $app->run();
  			<div class="containerU"><span>フォロー</span><?= h($app->me()->follow)?></div>
  			<div class="containerU"><span>フォロワー</span><?= h($app->me()->follower)?></div>
  			<div class="containerU"><span>電話番号</span><input type="tel" inputmode="tel" placeholder="080-1234-5678" name="tel" value="<?php if(isset($_SESSION['me']->tel)) { echo $_SESSION['me']->tel;} else {echo '';} ?>" ></div>
- 			<div class="containerU"><span>ウェブ利用</span>利用しない<input type="radio" id="web_flg" name="web_flg" value="0" <?php if (h($_SESSION['me']->web_flg) == 0) {echo 'checked';} ?>>
+ 			<li><?php if(isset($_SESSION['me']->shokai)) { echo $_SESSION['me']->shokai;} else {echo '';} ?></li>
 
     	</ul>
     </div>

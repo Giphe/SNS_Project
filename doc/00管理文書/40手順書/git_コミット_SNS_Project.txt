@@ -1,9 +1,9 @@
-git コミットコマンド↓
+git コミットコマンド（コメントは可変）↓
 
 
 cd C:\Program Files\pleiades\xampp\htdocs\SNS_Project
 git config --global user.name "Giphe"
 git config --global user.email "yama8ky7@gmail.com"
 git add .
-git commit
+git commit -m"途中経過"
 git push origin branch_src

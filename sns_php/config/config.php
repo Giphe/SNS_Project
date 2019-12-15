@@ -9,7 +9,10 @@ define('DB_PASSWORD', 'yama8ky7');
 define('SITE_URL', 'http://' . $_SERVER['HTTP_HOST']);
 define('bathPath', 'http://' . $_SERVER['HTTP_HOST'] . '/master');
 
+//TODO:いらなかったら削除myfuncで認証系は十分
 require_once(__DIR__. '/../lib/functions.php');
+
+//require_once(__DIR__. '/../lib/myfunc.php');
 require_once(__DIR__. '/autoload.php');
 
 // TODO: dispacher acteivate

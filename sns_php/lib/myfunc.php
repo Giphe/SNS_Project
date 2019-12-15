@@ -27,7 +27,6 @@ class myfunc {
             exit;
         }
 
-        $this->_validateToken();
         //セッションの値を格納
         $this->login_id = $_SESSION['me']->login_id;
         $this->password = $_SESSION['me']->password;
@@ -71,7 +70,7 @@ class myfunc {
     /* _validateToken
      * @param
      */
-    private function _validateToken() {
+    public function _validateToken() {
         if(!isset($_SESSION['token']) || !isset($_POST['token']) || $_SESSION['token'] !== $_POST['token']){
             throw new \Exception('invalid token!');
         }

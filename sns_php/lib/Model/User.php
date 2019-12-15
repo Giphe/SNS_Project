@@ -5,7 +5,7 @@ namespace MyApp\Model;
 class User extends \MyApp\Model {
     protected $user = '';
 
-  public function create($values){
+  public function create($values) {
     $stmt = $this->db->prepare("insert into t_users (email, password, created,
     modified, user_name) values (:email, :password, now(), now(), :user_name)");
     $res = $stmt->execute([
