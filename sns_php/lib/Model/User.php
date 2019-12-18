@@ -41,6 +41,7 @@ class User extends \MyApp\Model {
    *
    */
   public function selectUser(){
+//    $_db = $this->_db();
     $stmt = $this->db->query(sprintf("select * from t_users where id = %d", $_SESSION['me']->id));
     $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
     return $stmt->fetchAll();

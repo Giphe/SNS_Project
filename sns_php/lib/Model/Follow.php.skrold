@@ -24,7 +24,7 @@ class Follow extends \MyApp\Model {
         $stmt = $this->db->prepare(sprintf("delete from t_follow where follow_id = %d", $_SESSION['me']->id));
         $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
         $user = $stmt->fetch();
-        $_db->commit();
+        $this->_db->commit();
 
         if(empty($user)){
             throw new \MyApp\Exception\UnmatchEmailOrPassword();

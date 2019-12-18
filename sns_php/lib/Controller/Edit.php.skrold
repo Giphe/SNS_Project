@@ -107,7 +107,7 @@ class Edit extends \MyApp\Controller {
      */
     public function getTodo(){
     	$_db = $this->db();
-        $stmt = $_db->query(sprintf("select * from t_todos where todo_id = %d", $_REQUEST['todo_id']));
+        $stmt = $this->_db->query(sprintf("select * from t_todos where todo_id = %d", $_REQUEST['todo_id']));
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
@@ -144,7 +144,7 @@ class Edit extends \MyApp\Controller {
         } else {
             $sql = sprintf("update t_todos set title = :title, body = :body, user_id = :user_id, user_name = :user_name, created = now()
             where todo_id = %d", $this->todo_id);
-            $stmt = $_db->prepare($sql);
+            $stmt = $this->_db->prepare($sql);
             $stmt->execute([
                 ':title' => $this->title,
                 ':body' => $this->body,

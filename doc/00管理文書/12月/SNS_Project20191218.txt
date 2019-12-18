@@ -1,0 +1,68 @@
+2109/12/03 SNS_Project
+
+
+■課題
+・UserPage.紹介文、count(follower_id)、count(user_id)、リスト状
+・イラレ
+
+■不具合
+・連続投稿が可能
+→ajaxを使ってボタンをグレーアウトする。
+
+■TODO:ユーザ管理画面の作成（管理者は一人くらい）
+・ログイン情報の補強
+・右上のアイコン画像をクリックでユーザ編集画面に移動
+・csrf対策
+・アイコン画像label追加
+
+■muser
+・更新時にDB更新と画像の物理削除
+・セッションの書き換え
+
+■備忘録C#
+
+
+■ダッシュボードの機能参考
+・サイドバーをタブ化する。ダッシュボードはヘッダーに追加→これからindexで実装
+
+■画像のサイズ上限
+・3MB以上のファイルはアップ不可あるいはサイズを縮小して表示
+
+■Sqlクラスの作成→保留
+
+■myfunc
+・$myfunc = new \MyApp\myfunc();で_createToken(), _validateToken()を実装
+・認証はログイン機能を流用→認証テーブル追加、クッキーの保持(2日間有効)
+・su_flgによる認証myfunc(2)（それ以外はmyfunc(1))
+・セッションの書き換え毎度myfunc処理を走らせる→セッションの値の書き換え→中身まだ。
+
+実装
+→t_authテーブル追加（削除は以下の場合）
+・ログアウト時
+・invalidTokenが投げられた時
+
+■Exceptionが投げられたら
+・t_authからログイン中のuserをdelete
+・セッションをdestroyさせる
+
+■follow機能の実装
+・フォローボタン押下後t_followにフォロー者user_id, フォロワーfollower_id、フォロー日時が追加される
+・ajaxでstatus管理
+
+■[HTTP_REFERER]	"http://localhost/master/todo.php?"	
+・http://localhost/master/todo.phpまで一致すればtrueを返すようにする（_ajax.php）
+
+■Index.phpのajax処理
+・フォロー、いいね、リツイート機能
+・フォローボタン押下後、解除にボタンが表示
+・フォロワー、フォロー一覧表示
+・解除ボタン押下後、フォローボタンが表示
+※いいね、リツイート機能も同様
+js→index.jsを実装
+・jsを読み込ませる
+・todo→indexに変更する
+・画面レイアウトを変更id, class等
+
+■クラス継承について
+・コントローラー側でDBオブジェクトを保持
+・function内で$_db = $this->db();をおまじないとして使うこととする。

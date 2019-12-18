@@ -39,7 +39,7 @@ class Topics extends \MyApp\Controller {
      */
     public function getValues(){
     	$_db = $this->db();
-        $stmt = $_db->query("select * from t_topics");
+        $stmt = $this->_db->query("select * from t_topics");
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
@@ -50,7 +50,7 @@ class Topics extends \MyApp\Controller {
      */
     public function getCategory(){
     	$_db = $this->db();
-        $stmt = $_db->query("select * from m_category");
+        $stmt = $this->_db->query("select * from m_category");
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 

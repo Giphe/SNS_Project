@@ -53,7 +53,7 @@ class Todo extends \MyApp\Controller {
      */
     public function getAll(){
     	$_db = $this->db();
-        $stmt = $_db->query("select * from t_todos order by todo_id desc");
+        $stmt = $this->_db->query("select * from t_todos order by todo_id desc");
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
@@ -64,7 +64,7 @@ class Todo extends \MyApp\Controller {
      */
     public function getAllComments($param){
     	$_db = $this->db();
-        $stmt = $_db->query(sprintf("select * from t_comments where todo_id = %d order by comment_id asc", $param));
+        $stmt = $this->_db->query(sprintf("select * from t_comments where todo_id = %d order by comment_id asc", $param));
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
@@ -120,17 +120,17 @@ class Todo extends \MyApp\Controller {
         }
         $_db = $this->db();
 
-        $_db->beginTransaction();
+        $this->_db->beginTransaction();
 
         $sql = sprintf("update t_todos set state = (state + 1) %% 2 where todo_id = %d", $_POST['id']);
-        $stmt = $_db->prepare($sql);
+        $stmt = $this->_db->prepare($sql);
         $stmt->execute();
 
         $sql = sprintf("select state from t_todos where todo_id = %d",$_POST['id']);
-        $stmt = $_db->query($sql);
+        $stmt = $this->_db->query($sql);
         $state = $stmt->fetchColumn();
 
-        $_db->commit();
+        $this->_db->commit();
 
         return [
             'state' => $state
@@ -148,13 +148,13 @@ class Todo extends \MyApp\Controller {
         }
         $_db = $this->db();
 
-        $_db->beginTransaction();
+        $this->_db->beginTransaction();
 
         $sql = sprintf("update t_todos set state = %d %% 2", $_POST['id']);
-        $stmt = $_db->prepare($sql);
+        $stmt = $this->_db->prepare($sql);
         $stmt->execute();
 
-        $_db->commit();
+        $this->_db->commit();
 
         return [];
     }
@@ -175,7 +175,7 @@ class Todo extends \MyApp\Controller {
         	
             $sql = "insert into t_todos (title, body, user_id, user_name, created)
             values (:title, :body, :user_id, :user_name, now())";
-            $stmt = $_db->prepare($sql);
+            $stmt = $this->_db->prepare($sql);
             $stmt->execute([
                 ':title' => $_POST['title'],
                 ':body' => $_POST['body'],
@@ -183,7 +183,7 @@ class Todo extends \MyApp\Controller {
                 ':user_name' =>$_SESSION['me']->user_name
             ]);
             return [
-                'todo_id' => $_db->lastInsertId()
+                'todo_id' => $this->_db->lastInsertId()
             ];
         }
 
@@ -200,11 +200,11 @@ class Todo extends \MyApp\Controller {
         }
         $_db = $this->db();
         $sql = sprintf("delete from t_todos where todo_id = %d", $_POST['id']);
-        $stmt = $_db->prepare($sql);
+        $stmt = $this->_db->prepare($sql);
         $stmt->execute();
 
         $sql = sprintf("delete from t_comments where todo_id = %d", $_POST['id']);
-        $stmt = $_db->prepare($sql);
+        $stmt = $this->_db->prepare($sql);
         $stmt->execute();
 
         return [];
@@ -223,11 +223,11 @@ class Todo extends \MyApp\Controller {
         if ($_POST['check'] == "true") {
         	$_db = $this->db();
             $sql = "truncate table t_todos";
-            $stmt = $_db->prepare($sql);
+            $stmt = $this->_db->prepare($sql);
             $stmt->execute();
 
             $sql = "truncate table t_comments";
-            $stmt = $_db->prepare($sql);
+            $stmt = $this->_db->prepare($sql);
             $stmt->execute();
         } else {
             return [];
@@ -247,11 +247,11 @@ class Todo extends \MyApp\Controller {
         if ($_POST['check'] == "false") {
         	$_db = $this->db();
             $sql = "delete from t_todos where state = 1";
-            $stmt = $_db->prepare($sql);
+            $stmt = $this->_db->prepare($sql);
             $stmt->execute();
 
             $sql = "delete from t_comments where state = 1";
-            $stmt = $_db->prepare($sql);
+            $stmt = $this->_db->prepare($sql);
             $stmt->execute();
         }
         return [];

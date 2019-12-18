@@ -24,7 +24,15 @@ class Mtopics extends \MyApp\Controller{
 
         //CSRF対策
         $this->_createToken();
-        
+        /*:TODOいらなかったら消す
+        try{
+            $this->_db = new \PDO(DSN, DB_USERNAME, DB_PASSWORD);
+            $this->_db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        }catch(\PDOException $e){
+            echo $e->getMessage();
+            exit;
+        }
+        */
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             // ブラウザからHTMLページを要求された場合
             if ($this->user_name != '') {
@@ -73,7 +81,7 @@ class Mtopics extends \MyApp\Controller{
      */
     public function getValues(){
     	$_db = $this->db();
-        $stmt = $_db->query("select * from t_topics");
+        $stmt = $this->_db->query("select * from t_topics");
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
@@ -84,7 +92,7 @@ class Mtopics extends \MyApp\Controller{
      */
     public function getCategory(){
     	$_db = $this->db();
-        $stmt = $_db->query("select * from m_category order by category_id asc");
+        $stmt = $this->_db->query("select * from m_category order by category_id asc");
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
@@ -144,7 +152,7 @@ class Mtopics extends \MyApp\Controller{
             try{
                     $sql = "insert into t_topics (kubun, category_id, title, body, koukai_date, start_date, end_date, created, created_by, modified, modified_by)
                     values (:kubun, :category_id, :title, :body, :koukai_date, :start_date, :end_date, now(), :created_by, now(), :modified_by)";
-                    $stmt = $_db->prepare($sql);
+                    $stmt = $this->_db->prepare($sql);
                     $stmt->execute([
                         ':kubun' => $param['kubun'],
                         ':category_id' => $param['category_id'],
@@ -157,7 +165,7 @@ class Mtopics extends \MyApp\Controller{
                         ':modified_by' => $param['user_name']
 
                     ]);
-                    $_db->commit();
+                    $this->_db->commit();
                 } catch(\Exception $e) {
                     return;
                 }

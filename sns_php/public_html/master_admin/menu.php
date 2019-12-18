@@ -35,7 +35,7 @@ $app->run();
       <p class="fs12"><a href="/master_admin/mwisp.php">Wisp管理</a></p>
 
 
-      <h1>Menu <span class="fs12">(<?=count($app->getValues()->users) ?>)</span> </h1>
+      <h1>Menu <span class="fs12">(<?=count($app->getValues()->user) ?>)</span> </h1>
       <p class="fs12"><a href="/master/index.php">ホーム</a></p>
     </div>
   </body>

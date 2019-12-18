@@ -4,9 +4,6 @@ namespace MyApp\Controller;
 
 class Index extends \MyApp\Controller {
 
-    //パラメータを取得
-    protected $user_name = '';
-
   public function run() {
     if(!$this->isLoggedIn()){
     //login
@@ -27,6 +24,15 @@ class Index extends \MyApp\Controller {
       //認証チェック
       $myfunc = new \MyApp\myfunc();
       $myfunc->checkUser(1);
+      /*:TODOいらなかったら消す
+        try{
+            $this->_db = new \PDO(DSN, DB_USERNAME, DB_PASSWORD);
+            $this->_db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        }catch(\PDOException $e){
+            echo $e->getMessage();
+            exit;
+        }
+        */
 
       if($_SERVER["REQUEST_METHOD"] != "POST"){
           // ブラウザからHTMLページを要求された場合

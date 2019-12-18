@@ -129,7 +129,7 @@ class Muser extends \MyApp\Controller{
      */
     public function getValues(){
     	$_db = $this->db();
-        $stmt = $_db->query("select * from t_users");
+        $stmt = $this->_db->query("select * from t_users");
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
@@ -140,12 +140,12 @@ class Muser extends \MyApp\Controller{
     public function update_user($values){
     	$_db = $this->db();
 
-        $_db->beginTransaction();
+        $this->_db->beginTransaction();
 
         $sql = sprintf("update t_users set email = :email, user_name = :user_name, address = :address,
         tel = :tel, shokai = :shokai, web_flg = :web_flg, premium_flg = :premium_flg, icon = :icon, modified = now(),
         modified_by = :modified_by where id = %d", $_SESSION['me']->id);
-        $stmt = $_db->prepare($sql);
+        $stmt = $this->_db->prepare($sql);
         $res = $stmt->execute([
             ':email' => $values['email'],
             ':user_name' => $values['user_name'],
@@ -158,7 +158,7 @@ class Muser extends \MyApp\Controller{
             ':modified_by' => $_SESSION['me']->user_name
         ]);
 
-        $_db->commit();
+        $this->_db->commit();
 
         if($res === false ){
             throw new \MyApp\Exception\DuplicateEmail();
@@ -171,7 +171,7 @@ class Muser extends \MyApp\Controller{
      */
     public function getUser(){
     	$_db = $this->db();
-        $stmt = $_db->query("select * from t_users");
+        $stmt = $this->_db->query("select * from t_users");
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
@@ -182,7 +182,7 @@ class Muser extends \MyApp\Controller{
      */
     public function getCategory(){
     	$_db = $this->db();
-        $stmt = $_db->query("select * from m_category");
+        $stmt = $this->_db->query("select * from m_category");
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 

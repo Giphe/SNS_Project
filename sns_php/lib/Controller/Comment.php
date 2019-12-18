@@ -8,7 +8,6 @@ namespace MyApp\Controller;
 class Comment extends \MyApp\Controller {
 
     //パラメータを取得
-    private $_db;
     protected $user_id;
     protected $user_name;
     protected $todo_id;
@@ -34,7 +33,7 @@ class Comment extends \MyApp\Controller {
 
         if($_SERVER["REQUEST_METHOD"] != "POST"){
             // ブラウザからHTMLページを要求された場合
-            $myfunc->_validatetoken();
+
             if ($this->user_name != '') {
                 $this->user_name = $_SESSION['me']->user_name;
             }
@@ -42,6 +41,7 @@ class Comment extends \MyApp\Controller {
 
         }else{
 
+            $myfunc->_validatetoken();
             //ポストされた値を格納
             $this->todo_id = $_REQUEST['todo_id'];
             $this->user_name = $_POST['user_name'];
@@ -72,7 +72,7 @@ class Comment extends \MyApp\Controller {
     /*
      * _validateToken
      * @param
-     */
+     *
      /*
     private function _validateToken(){
         if(!isset($_SESSION['token']) || !isset($_POST['token']) || $_SESSION['token'] !== $_POST['token']){
@@ -95,24 +95,25 @@ class Comment extends \MyApp\Controller {
 
     /* comment新規作成
      * createComment
-     * @param
+     * @param $_REQUEST['todo_id']
      * @return array();
      */
     private function createComment($param){
         //         $user_id = $_SESSION[me]->id;
         //         $user_name = $_SESSION[me]->user_name;
+        $_db = $this->db();
 
         if(!isset($_POST['user_name']) || $_POST['user_name'] === '') {
             throw new \Exception('[create] user_name not set!');
         } else {
             $sql = "insert into t_comments (todo_id, body, user_id, user_name, created)
             values (:todo_id, :body, :user_id, :user_name, now())";
-            $stmt = $this->_db->prepare($sql);
+            $stmt = $_db->prepare($sql);
             $stmt->execute([
                 ':todo_id' => $param,
                 ':body' => $_POST['body'],
                 ':user_id' =>$_SESSION['me']->id,
-                ':user_name' =>$this->user_name
+                ':user_name' =>$_SESSION['me']->user_name
             ]);
             header('Location:' . SITE_URL . '/master/todo.php');
         }
