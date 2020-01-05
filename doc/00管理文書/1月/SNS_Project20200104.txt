@@ -1,0 +1,40 @@
+2020/01/04 SNS_Project
+
+
+■ダッシュボードの機能参考
+・サイドバーをタブ化する。ダッシュボードはヘッダーに追加→これからindexで実装
+
+■画像のサイズ上限
+・3MB以上のファイルはアップ不可あるいはサイズを縮小して表示
+
+■myfunc
+・$myfunc = new \MyApp\myfunc();で_createToken(), _validateToken()を実装
+・認証はログイン機能を流用→認証テーブル追加、クッキーの保持(2日間有効)
+・su_flgによる認証myfunc(2)（それ以外はmyfunc(1))
+・セッションの書き換え毎度myfunc処理を走らせる→セッションの値の書き換え→中身まだ。
+
+実装
+→t_authテーブル追加（削除は以下の場合）
+・ログアウト時
+・invalidTokenが投げられた時
+
+■[HTTP_REFERER]	"http://localhost/master/todo.php?"	
+・http://localhost/master/todo.phpまで一致すればtrueを返すようにする（_ajax.php）
+
+■Index.phpのajax処理
+・フォロー、いいね、リツイート機能
+・フォローボタン押下後、解除にボタンが表示
+・フォロワー、フォロー一覧表示
+・解除ボタン押下後、フォローボタンが表示
+※いいね、リツイート機能も同様
+js→index.jsを実装
+・jsを読み込ませる
+・todo→indexに変更する
+・画面レイアウトを変更id, class等
+
+■クラス継承について
+・コントローラー側でDBオブジェクトを保持
+・function内で$_db = $this->db();をおまじないとして使うこととする。
+
+■タブの作成
+・ulタグを初期状態で非表示→切り替えタブクリック後liタグにshowクラスを付与

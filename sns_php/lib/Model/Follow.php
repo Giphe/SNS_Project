@@ -42,7 +42,7 @@ class Follow extends \MyApp\Model {
      */
     public function get_follow(){
 
-        $sql = sprintf("select follower_name from t_follow where user_id = %d", $_SESSION['me']->id);
+        $sql = sprintf("select * from t_follow where user_id = %d", $_SESSION['me']->id);
         $stmt = $this->db->query($sql);
         $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
         $res = $stmt->fetchAll();
@@ -57,7 +57,7 @@ class Follow extends \MyApp\Model {
      */
     public function get_follower(){
 
-        $sql = sprintf("select follower_name from t_follow where follower_id = %d", $_SESSION['me']->id);
+        $sql = sprintf("select * from t_follow where follower_id = %d", $_SESSION['me']->id);
         $stmt = $this->db->query($sql);
         $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
         $res = $stmt->fetchAll();

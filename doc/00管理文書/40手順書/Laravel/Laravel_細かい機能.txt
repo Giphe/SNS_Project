@@ -1,0 +1,31 @@
+
+■validation
+┗postに対して
+┗フォーム拡張リクエスト
+artisanコマンド
+php artisan make:request HelloRequest
+
+・authorizeメソッド
+HelloControllerからのリクエストを確認
+
+・rulesメソッド
+それぞれの値に対してどのようなルールでvalidateするのかを明記
+ルール例（required, email, numeric|between0,150 など
+
+・messagesメソッド
+配列で'name'=> 'string文字列',とすることで
+validateの表示を変更することができる
+
+・Validatorを作成する
+FormRequestに用意されているvalidateメソッドではなくValidatorクラスを使う。
+use Validatorと validator::make(値の配列, ルールの配列);
+
+・正規：validator::make(値の配列, $rules, $messages);
+$rules, $messagesはそれぞれ配列
+
+・条件に応じてルールを追加する
+$validator->sometimes(項目名, ルール名, function($input) {
+            return !is_int($input->age);
+        });
+第3引数はクロージャ。$inputには入力されたものが渡される。
+$input->nameといった具合に

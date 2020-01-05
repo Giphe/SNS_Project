@@ -1,0 +1,21 @@
+StreamJsonRpc.RemoteInvocationException : オブジェクトの現在の状態に問題があるため、操作は有効ではありません。 (ErrorKind: Error HResult: 80131509)
+   at async StreamJsonRpc.JsonRpc.InvokeCoreAsync[TResult](<不明なパラメーター>)
+   at async Microsoft.ServiceHub.Framework.RemoteServiceBroker.GetPipeAsync(<不明なパラメーター>)
+   at async Microsoft.ServiceHub.Client.HubClient.GetPipeAsync(<不明なパラメーター>)
+   at async Microsoft.ServiceHub.Client.HubClient.RequestServiceAsync(<不明なパラメーター>)
+   at async Microsoft.VisualStudio.LanguageServices.Remote.ServiceHubRemoteHostClient.Connections.RetryRemoteCallAsync[TException,TResult](<不明なパラメーター>)
+   at async Microsoft.VisualStudio.LanguageServices.Remote.ServiceHubRemoteHostClient.Connections.RequestServiceAsync(<不明なパラメーター>)
+   at Microsoft.VisualStudio.Telemetry.WindowsErrorReporting.WatsonReport.GetClrWatsonExceptionInfo(Exception exceptionObject)
+---> (Remote Exception) {
+  "type": "Microsoft.ServiceHub.Utility.ServiceHubError",
+  "message": "オブジェクトの現在の状態に問題があるため、操作は有効ではありません。 (ErrorKind: Error HResult: 80131509)",
+  "stack": "   場所 Microsoft.ServiceHub.Controller.HubController.<LocateAsync>d__8.MoveNext()\r\n--- 直前に例外がスローされた場所からのスタック トレースの終わり ---\r\n   場所 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\r\n   場所 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   場所 Microsoft.ServiceHub.Controller.HubController.<RequestServiceChannelAsync>d__11.MoveNext()\r\n--- 直前に例外がスローされた場所からのスタック トレースの終わり ---\r\n   場所 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\r\n   場所 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   場所 Microsoft.ServiceHub.Controller.ClientConnection.<RequestServiceChannelAsync>d__26.MoveNext()",
+  "code": -2146233088,
+  "inner": {
+    "type": "System.InvalidOperationException",
+    "message": "オブジェクトの現在の状態に問題があるため、操作は有効ではありません。",
+    "stack": "   場所 Microsoft.ServiceHub.Controller.MethodCallTracker.<TrackMethodAsync>d__10.MoveNext()\r\n--- 直前に例外がスローされた場所からのスタック トレースの終わり ---\r\n   場所 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\r\n   場所 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   場所 Microsoft.ServiceHub.Controller.HubController.<LocateAsync>d__8.MoveNext()",
+    "code": -2146233079,
+    "inner": null
+  }
+} <--- 

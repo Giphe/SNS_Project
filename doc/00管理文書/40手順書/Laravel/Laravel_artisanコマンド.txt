@@ -1,0 +1,26 @@
+コントローラー作成
+
+php artisan make:controller [コントローラ名]
+
+Laravel デプロイ時コマンド
+composer dump-autoload
+php artisan clear-compiled
+php artisan optimize
+
+マイグレーションLaravelsqliteバージョン管理
+
+ php artisan make:migration create_people_table（テーブル名）
+ １．Laravelにdatabase.sqliteを移動
+ ２．touch database/database.sqliteでDATABASEファイルを作成
+ ３．$Laravelでphp artisan migrateでdatabase/database.sqliteにマイグレする。（なぜかmigrationsテーブルが生成される。）
+ 
+シーダーの作成 
+ 
+ php artisan make:seeder PeopleTableSeeder
+ →peopleテーブルのシードを作成
+ →Error:DatabaseSeeder.phpがないよ→backupを取ったDatabaseSeederをマイグレ後デプロイ
+ 
+ php artisan db:seed
+ ・シードのマイグレ成功。
+ 
+ 

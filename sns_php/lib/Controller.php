@@ -34,8 +34,6 @@ class Controller {
 
   protected function setValues($key, $value){
     $this->_values->$key = $value;
-    // var_dump($this->_values);
-
   }
 
   public function getValues(){

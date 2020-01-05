@@ -1,34 +1,56 @@
 $(function() {
   'use strict';
-  var id = 0;
 
-  $('#new_user').focus();
-  //すべてチェック
-  $('.all_check').on('click', function() {
+  //followタブ表示・非表示
+//  $('.follow').on('click', function() {
+//	  id++;
+//    	if (id % 2 === 0) {
+//	        $('li').find('.follow').addClass('done');
+//    	} else {
+//	        $('li').find('.follow').removeClass('done');
+//    	}
+//
+//  });
+//
+//  //followerタブ表示・非表示
+//  $('.follower').on('click', function() {
+//	  id++;
+//    	if (id % 2 === 0) {
+//	        $('li').find('.follower').addClass('done');
+//    	} else {
+//	        $('li').find('.follower').removeClass('done');
+//    	}
+//
+//  });
 
-	id++;
-    $.post('_ajax.php', {
-      mode: 'update_all',
-      id: id,
-      token: $('#token').val()
-    }).done (function() {
-    	if (id % 2 === 1) {
-	        $('li').find('.title').addClass('done');
-	        $('div').find('.body').addClass('done');
-	        $('div').find('.comment').addClass('done');
-	        $('li').find('#list').prop("checked", true);
-    	} else {
-	        $('li').find('.title').removeClass('done');
-	        $('div').find('.body').removeClass('done');
-	        $('div').find('.comment').removeClass('done');
-	        $('#list').focus();
-	        $('li').find('#list').prop("checked", false);
-    	}
-    }).fail (function() {
-      alert('failed!');
+
+    // ①タブをクリックしたら発動
+    $('.tab li').click(function() {
+
+      // ②クリックされたタブの順番を変数に格納
+      var index = $('.tab li').index(this);
+
+      // ③画像を一旦非クリックの状態にリセットするためのループ処理
+      $('.tab li img').each(function() {
+
+        // ④_onのファイル名を_offに書き換え、変数に格納
+        var file = $(this).attr('src').replace(/_on/g, '_off');
+
+        // ⑤書き換えたファイル名をimg要素に適用する
+        $(this).attr('src', file);
+      });
+
+      // ⑥改めてクリックされた画像のファイル名を_onに書き換え、変数に格納
+      var file2 = $(this).children('img').attr('src').replace(/_off/g, '_on');
+
+      // ⑦書き換えたファイル名をimg要素に適用する
+      $(this).children('img').attr('src', file2);
+
+      // ⑧コンテンツを一旦非表示にし、クリックされた順番のコンテンツのみを表示
+      $('.area ul').removeClass('show').eq(index).addClass('show');
+
     });
 
-  });
 
   /* 単一更新update
    * @param id,mode,token

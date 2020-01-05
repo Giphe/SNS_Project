@@ -1,0 +1,4 @@
+WPFでアプリ作成
+
+WPFはusing System.Windows.名前空間
+Winsows.Formはusing System.Windows.Forms.名前空間

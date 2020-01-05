@@ -1,0 +1,18 @@
+フォルダ構成の確認
+
+ls -la
+
+管理者に切り替え
+sudo su
+
+vagrantユーザに切り替え
+su vagrant
+
+vagrantfile編集後
+vagrant reload
+
+コマンドの強制終了 
+Ctrl + D
+
+php artisanコマンド
+Laravelフォルダに遷移しているときのみ

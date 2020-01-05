@@ -1,0 +1,14 @@
+Laravelが遅い問題
+
+2）に移動しHomestead.yaml、通常はC:\Users\username\Homestead\Homestead.yaml
+
+3）type: "nfs"フォルダーセクションに次のように追加します。
+
+folders:
+    - map: ~/code
+      to: /home/vagrant/code
+      type: "nfs"
+      
+参考https://stackoverflow.com/questions/50614748/laravel-homestead-vagrant-virtualbox-is-slow-on-windows
+
+→若干早くなった？

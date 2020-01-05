@@ -56,27 +56,32 @@ $app->run();
  			<?php if(isset($_SESSION['me']->icon)) { ?>
  				<div class="containerU"><img src="/../img/icon/<?= h($_SESSION['me']->icon); ?>" name="icon" width="80px" height="80px"></div>
  			<?php } ?>
- 			<div class="containerU"><span>フォロー</span>
-     			<ul>
+ 			<ul class="tab clearfix">
+     			<li>フォロー</li>
+     			<li>フォロワー</li>
+ 			</ul>
+<!--いらなくなったら消す<div class="containerU"><button id="btn_f" class="follow">フォロー</button> -->
+     			<ul class="done" id="follow">
          			<?php foreach($app->getValues()->follow as $follow) { ?>
-    	     			<li><?=$follow->follower_name?></li>
+    	     			<li id="user_<?=$follow->user_id;?>"><?=$follow->follower_name?></li>
          			<?php } ?>
      			</ul>
- 			</div>
- 			<div class="containerU"><span>フォロワー</span>
-     			<ul>
+<!--  			</div> -->
+<!--  			<div class="containerU"><button id="btn_f" class="follower">フォロワー</button> -->
+     			<ul class="done" id="follower">
          			<?php foreach($app->getValues()->follower as $follower) { ?>
-    	     			<li><?=$follower->follower_name?></li>
+    	     			<li id="follower_<?=$follower->follower_id;?>"><?=$follower->follower_name?></li>
          			<?php } ?>
      			</ul>
- 			</div>
- 			<div class="containerU"><span>電話番号</span><input type="tel" inputmode="tel" placeholder="080-1234-5678" name="tel" value="<?php if(isset($_SESSION['me']->tel)) { echo $_SESSION['me']->tel;} else {echo '';} ?>" ></div>
+<!--  			</div> -->
+ 			<br><br><li>電話番号<?php if(isset($_SESSION['me']->tel)) { echo $_SESSION['me']->tel;} else {echo '';} ?></li>
  			<li><?php if(isset($_SESSION['me']->shokai)) { echo $_SESSION['me']->shokai;} else {echo '';} ?></li>
 
     	</ul>
     </div>
     <div id="footer">
     </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/js/index.js"></script>
   </body>
 </html>

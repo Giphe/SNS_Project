@@ -1,0 +1,38 @@
+
+■クエリビルダ
+
+・$変数 = DB::table('テーブル名');
+指定したテーブルのビルダを取得する。
+Database\Query空間に存在するBuilderクラス、Sqlクエリを生成する機能を提供。
+
+・get()メソッド
+Sqlで言うところのselect、配列の引数を用意することで要素を選択することができる
+
+・firstメソッド
+getの場合該当レコードをすべて返すがfirstの場合は最初のレコードのみを返す。
+一意のレコードしかないことがわかっている場合にはgetではなくfirstを使うのが一般的
+
+■likeや大小比較、OrderBy
+
+・like
+$name = $request->name;
+        $id = $request->id;
+        $items = DB::table('people')
+        ->where('name', 'like', '%' . $name . '%')
+        ->where('id', '<=', $id)
+        ->orWhere('mail', 'like', '%' . $name . '%')
+        ->get();
+
+・whereRawが大小比較の際に便利
+->whereRaw('age >= ? and age <= ?', [$min, $max])->get();
+上記のように whereRaw( 条件式, パラメータ配列)のような複雑な検索条件に用いられる。
+
+・orderBy
+orderBy(フィールド名, 'asc'または'desc')
+
+■select where insert update delete などもクエリビルダでかなり短縮可能。
+
+■マイグレーション
+データベースのバージョン管理機能
+PHPのスクリプトを使ってテーブル作成処理などを用意できる。
+

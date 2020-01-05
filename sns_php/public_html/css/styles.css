@@ -114,6 +114,8 @@ input[type=radio]:hover {
     cursor: pointer;
 }
 
+
+
 /*
 *別ページ
 */
@@ -244,9 +246,9 @@ div > li {
 }
 
 textarea {
-      height: 260px;
-      font-family: Arial, sans-serif;
-      position: relative;
+  height: 260px;
+  font-family: Arial, sans-serif;
+  position: relative;
 }
 
 div.containerA>span {
@@ -254,8 +256,36 @@ div.containerA>span {
 	height:auto;
 }
 
-div.containerU>span {
+div.containerU > span {
 	 width:150px;
   height:auto;
+}
 
+/*
+* jquery処理
+*/
+
+.tab {
+  border-bottom: 3px solid #ff3366;
+}
+
+.tab li {
+  float: left;
+  margin: 0 10px -1px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.done {
+  display: none;
+}
+
+.done li.show {
+  display: block;
+}
+
+#follow {
+  color: #fff;
+  background: #fb4343;
+  cursor: auto;
 }
