@@ -1,0 +1,30 @@
+
+Laravelデバッグ備忘録
+
+■Log ファサード
+
+//Eloquent & クエリビルダの返り値をロギングする場合
+$findData = $User::where('email',$id)->where('password',$password)->first();
+Log::debug('$findData="' .$findData. '"');
+
+// ログに配列を展開して吐き出す
+Log::debug(print_r($arr, true));
+
+// オブジェクトも可能
+Log::debug(print_r($object, true));
+
+//クエリービルダーの結果をロギングする場合
+$results = User::where('id',1)->toSql();
+Log::debug('$results="' .$results. '"');
+
+//
+
+■Tinker
+未実装
+
+■Laravelデバッグバー
+未実装
+
+■ヘルパーメソッド
+・dd()→処理を止めてWeb上に表示
+・dump()→処理を最後まで流してWeb上に表示

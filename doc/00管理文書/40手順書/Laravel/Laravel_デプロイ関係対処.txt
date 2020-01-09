@@ -1,0 +1,46 @@
+[Laravel備忘録]
+
+■public/index.php　$request->send(); on null
+・かなり悩まされたため。→結論　MiddleWareが悪い。
+
+▼エラー①
+[2020-01-06 11:53:51] local.DEBUG: $response = ""  
+[2020-01-06 11:53:52] local.ERROR: Call to a member function send() on null {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Call to a member function send() on null at /home/vagrant/code/Laravel/public/index.php:59)
+
+▼エラー②
+[2020-01-06 12:01:22] local.ERROR: Target class [App\Http\Middleware\HelloMiddleware] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [App\\Http\\Middleware\\HelloMiddleware] does not exist. at /home/vagrant/code/Laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php:805)
+[stacktrace]
+#0 /home/vagrant/code/Laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\\Container\\Container->build()
+#1 /home/vagrant/code/Laravel......（省略）
+
+エラー①はググっても出てこない→なぜかbk_HelloMiddleware.phpがヒットしてしまっていたから。
+StackOverFlowにて"$next(request);が悪さしている"という救済コメントがなければ一生路頭に迷っていた。
+
+index.phpの$request.....handle(省略)の記述はかつて手入力した？
+
+■デプロイに注意！
+以下のようにデプロイした場合にautoload_classmap.phpにbasePathが勝手に記録される場合がある。
+クラス名が一致している場合、ファイル自体を消してもbasePathが以下のように記録されている以上、
+エラーが延々と表示されてしまう。
+
+◇検索条件  "bk_HelloMiddleware.php"
+検索対象   *.*
+フォルダ   C:\Users\User\app\Laravel
+    (サブフォルダも検索)
+    (英大文字小文字を区別しない)
+    (文字コードセットの自動判別)
+    (一致した行を出力)
+
+
+C:\Users\User\app\Laravel\storage\logs\laravel-2019-12-30.log(1090,52)  [UTF-8]: #26 /home/vagrant/code/Laravel/app/Http/Middleware/bk_HelloMiddleware.php(24): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+C:\Users\User\app\Laravel\vendor\composer\autoload_classmap.php(24,82)  [SJIS]:     'App\\Http\\Middleware\\HelloMiddleware' => $baseDir . '/app/Http/Middleware/bk_HelloMiddleware.php',
+C:\Users\User\app\Laravel\vendor\composer\autoload_static.php(425,96)  [SJIS]:         'App\\Http\\Middleware\\HelloMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/bk_HelloMiddleware.php',
+3 個が検索されました。
+
+▼対策
+①極力余計なファイルをディレクトリに残さない。
+・bk_などファイルを複製する場合は注意（view以外は禁止）
+
+②デプロイでautoload_classmap.phpに残ったごみをGrepで検索してまとめて消去
+・あるいは余計なファイルを消してから再デプロイ
+
