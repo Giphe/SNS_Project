@@ -1,0 +1,21 @@
+Python作業メモ
+
+■enumerate
+scores = [40, 50]
+
+for i , score in enumerate(scores):
+    print("{0}:{1}".format(i, score))
+
+リスト型(配列)のi番目の要素(score)を取り出すことができる
+[1,3,5]
+
+タプル：一度生成すると変更できない、異なる要素を混ぜられる。
+(1,2,3)
+
+リスト→タプルtuple([1,2,3])
+タプル→リストlist((1,2,3))
+
+スライスめっちゃ使える
+s = "hello"
+print(s[1:4]) #ell
+

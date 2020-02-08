@@ -1,0 +1,40 @@
+C#Practice
+
+■配列を返すフォーム
+・コントロールをダブルクリックでイベントメソッドを作成
+・参照先になっているものは不用意に削除してしまうとエラーが発生する。
+
+■プロジェクトの種類ごとの違い
+・WPF→UI操作の難易度が高い。レイアウトがめんどくさい
+・コンソールアプリ→コンソールにコマンドを入力していくアプリ？
+・Windowsフォームアプリ→UI操作が簡単、イベントはコントロールをダブルクリック
+
+■ショートカット
+・インデント修正　ctrl + K → ctrl + D
+・折りたたみ　ctrl + M
+・検索置換　ctrl + shift + F
+・名前変更（一括）ctrl + R
+・ctrl + shift + B　リビルド
+
+■this.Closeでフォームを閉じる
+
+■VSCodeショートカット
+・import-error解消のためにSFTPプラグインを導入
+・ファイル→ワークスペースを追加（ワークスペースにはUsers/User/.vscodeを設定)
+・ctrl + shift + Pでショートカット検索を呼び出す→SFTP:Config
+・プロジェクトルートに.vscode/sftp.jsonが自動生成される。
+
+■ショートカット
+・vagrant ssh-config→仮想マシンのip確認
+・visualstudio
+コメント解除 ctrl + k + ctrl + u
+
+■WinSCPでミラーリング
+・同期自動化で/home（リモート）と/Users/User/MyCentOS/home(ローカル)を自動同期することが可能
+・ミラーリングは左のローカルディレクトリ側もpython_lessons（ミラーリング先フォルダ）を指定する必要がある。
+※「存在するファイルのみ同期」が有効になっているとファイルが追加されないので注意！
+
+■コメント
+・今日はpythonのpylint(import-error)をどうにかしたかった。setting.jsonをいじればどうにかなるらしい。
+・試しにhome/vagrant/.pyenv/shims/python3.8.1などを試してみたが効果はない。
+・パスが間違っているのか、そもそも仮想マシン上のファイルにvscodeがアクセスできないのか。
